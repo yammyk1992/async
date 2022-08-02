@@ -10,14 +10,14 @@ async def download(query, current_page):
     async with httpx.AsyncClient() as client:
         r = await client.get(url, headers=header, params=params)
 
-    if r.status_code == 200:
-        _r = r.json()
-        print(_r)
-        for item in _r.get('photos'):
-            print(item.get("src").get("original"))
+        if r.status_code == 200:
+            _r = r.json()
 
-        else:
-            print(r.status_code)
+            for item in _r.get('photos'):
+                print(item.get("src").get("original"))
+
+            else:
+                print(r.status_code)
     print(f'{query} = {current_page}')
 
 
